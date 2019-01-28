@@ -10,7 +10,8 @@ const routes: Routes = [
     path: 'members',
     canActivate: [AuthGuardService],
     loadChildren: './members/member-routing.module#MemberRoutingModule'
-  }
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

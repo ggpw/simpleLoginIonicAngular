@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TranslateService } from './translate.service';
+import { LanguageService } from './language.service';
 
-describe('TranslateService', () => {
+describe('LanguageService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: TranslateService = TestBed.get(TranslateService);
+    const service: LanguageService = TestBed.get(LanguageService);
     expect(service).toBeTruthy();
   });
 });

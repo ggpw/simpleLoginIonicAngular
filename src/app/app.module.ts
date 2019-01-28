@@ -27,14 +27,14 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     IonicStorageModule.forRoot(),
     HttpClientModule,
-    ComponentsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (createTranslateLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    ComponentsModule
   ],
   providers: [
     StatusBar,

@@ -12,12 +12,14 @@ export class AuthenticationService {
   authenticationState = new BehaviorSubject(false);
 
   constructor(private storage: Storage, private plt: Platform) {
+    console.log('construct AuthenticationService');
     this.plt.ready().then(() => {
       this.checkToken();
     });
   }
 
   login() {
+    console.log('login');
     return this.storage.set(TOKEN_KEY, 'user 12345').then(res => {
       this.authenticationState.next(true);
     });
@@ -34,6 +36,7 @@ export class AuthenticationService {
   }
 
   checkToken() {
+    console.log('checkToken');
     return this.storage.get(TOKEN_KEY).then(res => {
       if (res) {
         this.authenticationState.next(true);
