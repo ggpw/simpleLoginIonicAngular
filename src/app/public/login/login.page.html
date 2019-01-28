@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>{{'login.page' | translate}}</ion-title>
+    <ion-buttons slot="end">
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-button (click)="login()" expand="block">{{'login' | translate}}</ion-button>
+  <ion-button expand="block" color="secondary" href="/register" routerDirection="forward">{{'register' | translate}}</ion-button>
 </ion-content>
+
+<app-footer></app-footer>
