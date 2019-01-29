@@ -16,5 +16,6 @@
   "rePassword.required":"Mohon isi ulangi kata sandi",
   "firstName.required":"Mohon isi nama depan",
   "lastName.required":"Mohon isi nama belakang",
-  "password.notmatch":"Kata sandi tidak sesuai"
+  "password.notmatch":"Kata sandi tidak sesuai",
+  "welcome":"Selamat Datang"
 }

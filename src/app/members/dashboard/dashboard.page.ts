@@ -8,7 +8,12 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class DashboardPage implements OnInit {
 
-  constructor(private authService: AuthenticationService) { }
+  user = {};
+
+  constructor(private authService: AuthenticationService) {
+    this.user = authService.getCurrentLogin();
+    console.log('construct ', this.user);
+  }
 
   ngOnInit() {
   }

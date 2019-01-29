@@ -16,5 +16,6 @@
   "rePassword.required":"Retype Password is required",
   "firstName.required":"First Name is required",
   "lastName.required":"Last Name is required",
-  "password.notmatch":"Password not match"
+  "password.notmatch":"Password not match",
+  "welcome":"Welcome"
 }

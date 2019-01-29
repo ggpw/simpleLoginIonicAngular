@@ -11,6 +11,7 @@ const TOKEN_KEY = 'auth-token';
 export class AuthenticationService {
 
   authenticationState = new BehaviorSubject(false);
+  userState =  new BehaviorSubject({});
 
   constructor(private storage: Storage, private plt: Platform) {
     console.log('construct AuthenticationService');
@@ -32,6 +33,7 @@ export class AuthenticationService {
   authorizedLogin(user) {
     return this.storage.set(TOKEN_KEY, user).then(res => {
       this.authenticationState.next(true);
+      this.userState.next(user);
     });
   }
 
@@ -42,7 +44,7 @@ export class AuthenticationService {
     return this.storage.get(encryptedPassword).then(res => {
       console.log('res ', res);
       if (res && res.username === user.username) {
-        this.authorizedLogin(user);
+        this.authorizedLogin(res);
       }
     });
   }
@@ -50,7 +52,15 @@ export class AuthenticationService {
   logout() {
     return this.storage.remove(TOKEN_KEY).then(() => {
       this.authenticationState.next(false);
+      this.userState.next({});
     });
+  }
+
+  getCurrentLogin() {
+    if (this.isAuthenticated) {
+      return this.userState.value;
+    }
+    return null;
   }
 
   isAuthenticated() {
@@ -62,6 +72,7 @@ export class AuthenticationService {
     return this.storage.get(TOKEN_KEY).then(res => {
       console.log('checkToken ', res);
       if (res) {
+        this.userState.next(res);
         this.authenticationState.next(true);
       }
     });
