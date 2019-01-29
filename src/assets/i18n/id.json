@@ -4,5 +4,17 @@
   "register":"Daftar",
   "my.dashboard":"Dasbor Saya",
   "language":"Bahasa",
-  "select.lang":"Pilih Bahasa"
+  "select.lang":"Pilih Bahasa",
+  "submit":"Ajukan",
+  "userName":"Nama Pengguna",
+  "firstName":"Nama Depan",
+  "lastName":"Nama Belakang",
+  "password":"Kata Sandi",
+  "rePassword":"Ulangi Kata Sandi",
+  "userName.required":"Mohon isi nama pengguna",
+  "password.required":"Mohon isi kata sandi",
+  "rePassword.required":"Mohon isi ulangi kata sandi",
+  "firstName.required":"Mohon isi nama depan",
+  "lastName.required":"Mohon isi nama belakang",
+  "password.notmatch":"Kata sandi tidak sesuai"
 }

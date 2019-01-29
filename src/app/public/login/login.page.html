@@ -7,8 +7,20 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-button (click)="login()" expand="block">{{'login' | translate}}</ion-button>
-  <ion-button (click)="register()" color="secondary" expand="block">{{'register' | translate}}</ion-button>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <ion-item>
+        <ion-label>{{'userName' | translate}}</ion-label>
+        <ion-input type="text" formControlName="userName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{'password' | translate}}</ion-label>
+        <ion-input type="text" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-buttons>
+      <ion-button  type="submit" [disabled]="!loginForm.valid" expand="block">{{'login' | translate}}</ion-button>
+      <ion-button (click)="register()" color="secondary" expand="block">{{'register' | translate}}</ion-button>
+      </ion-buttons>
+  </form>
 </ion-content>
 
 <app-footer></app-footer>

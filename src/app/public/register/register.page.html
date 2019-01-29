@@ -3,10 +3,58 @@
     <ion-button slot="start">
       <ion-back-button defaultHref="/login"></ion-back-button>
     </ion-button>
-    <ion-title>Register</ion-title>
+    <ion-title>{{'register' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <form [formGroup]="user" (ngSubmit)="register()">
+      <ion-item>
+        <ion-label>{{'userName' | translate}}</ion-label>
+        <ion-input type="text" formControlName="userName">
+        </ion-input>
+      </ion-item>
+      <ion-text *ngIf="user.controls.userName.errors?.required && user.controls.userName.touched"
+        color="danger">
+        <p >{{'userName.required' | translate}}</p>
+      </ion-text>
+      <ion-item>
+        <ion-label>{{'password' | translate}}</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <ion-text *ngIf="user.controls.password.errors?.required && user.controls.password.touched"
+        color="danger">
+        <p >{{'password.required' | translate}}</p>
+      </ion-text>
+      <ion-item>
+        <ion-label>{{'rePassword' | translate}}</ion-label>
+        <ion-input type="password" formControlName="rePassword"></ion-input>
+      </ion-item>
+      <ion-text *ngIf="user.controls.rePassword.errors?.required && user.controls.rePassword.touched"
+        color="danger">
+        <p >{{'rePassword.required' | translate}}</p>
+      </ion-text>
+      <ion-text *ngIf="user.controls.rePassword.touched && user.controls.rePassword.errors?.passwordsNotEqual" color="danger">
+        <p >{{'password.notmatch' | translate}} </p>
+      </ion-text>
+      <ion-item>
+        <ion-label>{{'firstName' | translate}}</ion-label>
+        <ion-input type="text" formControlName="firstName"></ion-input>
+      </ion-item>
+      <ion-text *ngIf="user.controls.firstName.errors?.required && user.controls.firstName.touched"
+        color="danger">
+        <p >{{'firstName.required' | translate}}</p>
+      </ion-text>
+      <ion-item>
+        <ion-label>{{'lastName' | translate}}</ion-label>
+        <ion-input type="text" formControlName="lastName"></ion-input>
+      </ion-item>
+      <ion-text *ngIf="user.controls.lastName.errors?.required && user.controls.lastName.touched"
+        color="danger">
+        <p >{{'lastName.required' | translate}}</p>
+      </ion-text>
+      <ion-button  type="submit" [disabled]="!user.valid" expand="block">{{'submit' | translate}}</ion-button>
+  </form>
 </ion-content>
+
+<app-footer></app-footer>

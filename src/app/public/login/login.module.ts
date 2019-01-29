@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
 import { LoginPage } from './login.page';
-import { TranslateModule } from '@ngx-translate/core';
 import { ComponentsModule } from '../../components/components.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../../shared.module';
 
 const routes: Routes = [
   {
@@ -16,12 +14,11 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     FormsModule,
-    IonicModule,
+    ReactiveFormsModule,
     ComponentsModule,
-    RouterModule.forChild(routes),
-    TranslateModule.forChild()
+    RouterModule.forChild(routes)
   ],
   exports: [
   ],

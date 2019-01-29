@@ -14,7 +14,9 @@ export class FooterComponent implements OnInit {
   }
 
   changeLanguage(lang: string) {
-    this.langService.changeLanguage(lang);
+    if (this.langService.langState.value !== lang) {
+      this.langService.changeLanguage(lang);
+    }
   }
 
 }

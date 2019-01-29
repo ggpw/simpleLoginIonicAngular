@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Storage } from '@ionic/storage';
 import { Platform } from '@ionic/angular';
+import * as CryptoJS from 'crypto-js';
 
 const TOKEN_KEY = 'auth-token';
 @Injectable({
@@ -18,10 +19,31 @@ export class AuthenticationService {
     });
   }
 
-  login() {
-    console.log('login');
-    return this.storage.set(TOKEN_KEY, 'user 12345').then(res => {
+  register(user) {
+    console.log('user ', user);
+    const encryptedPassword = CryptoJS.MD5(user.password).toString();
+    user.password = encryptedPassword;
+    console.log('encryptedPassword ', user.password);
+    return this.storage.set(encryptedPassword, user).then(res => {
+      this.authorizedLogin(user);
+    });
+  }
+
+  authorizedLogin(user) {
+    return this.storage.set(TOKEN_KEY, user).then(res => {
       this.authenticationState.next(true);
+    });
+  }
+
+  login(user) {
+    console.log('login ', user);
+    const encryptedPassword = CryptoJS.MD5(user.password).toString();
+    console.log('encryptedPassword ', encryptedPassword);
+    return this.storage.get(encryptedPassword).then(res => {
+      console.log('res ', res);
+      if (res && res.username === user.username) {
+        this.authorizedLogin(user);
+      }
     });
   }
 
@@ -38,6 +60,7 @@ export class AuthenticationService {
   checkToken() {
     console.log('checkToken');
     return this.storage.get(TOKEN_KEY).then(res => {
+      console.log('checkToken ', res);
       if (res) {
         this.authenticationState.next(true);
       }
