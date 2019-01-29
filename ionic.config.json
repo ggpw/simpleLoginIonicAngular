@@ -1,5 +1,7 @@
 {
-  "name": "simpleLogin",
-  "integrations": {},
+  "name": "simple.login",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

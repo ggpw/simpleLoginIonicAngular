@@ -1,5 +1,5 @@
 {
-  "name": "simpleLogin",
+  "name": "simple.login",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -27,6 +27,7 @@
     "@ionic/storage": "^2.2.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
+    "cordova-android": "7.1.4",
     "core-js": "^2.5.4",
     "crypto-js": "^3.1.9-1",
     "rxjs": "~6.3.3",
@@ -58,5 +59,10 @@
     "tslint": "~5.12.0",
     "typescript": "~3.1.6"
   },
-  "description": "An Ionic project"
+  "description": "An Ionic project",
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-splashscreen": {}
+    }
+  }
 }
